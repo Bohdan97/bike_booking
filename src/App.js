@@ -1,23 +1,60 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Footer from './components/Footer';
+import Form from './components/Form';
+import Header from './components/Header';
+import Statistics from './components/Statistics';
+import Cart from './components/Cart';
+import { useState } from 'react';
+
 function App() {
+  const [bike, setBike] = useState([
+    {
+      name: 'vdd',
+      type: 'sf',
+      color: 'red',
+      wheel_size: 26,
+      price: 65,
+      id: 5463463,
+      description: 'gfdgvdfvd',
+      status: true,
+    },
+    {
+      name: 'vdd',
+      type: 'sf',
+      color: 'red',
+      wheel_size: 26,
+      price: 69,
+      id: 54345564,
+      description: 'gfdgvdfvd',
+      status: true,
+    },
+  ]);
+
+  const addBike = (task) => {
+    const newBike = { ...task };
+    setBike([...bike, newBike]);
+  };
+
+  const deleteBike = (id) => {
+    setBike(bike.filter((c) => c.id !== id));
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div className="main">
+        <div className="half_main">
+          {bike.map((item) => (
+            <Cart key={item.id} item={item} onDelete={deleteBike} />
+          ))}
+        </div>
+        <div className="second_half">
+          <Form onAdd={addBike} />
+          <Statistics bike={bike} />
+        </div>
+      </div>
+      <Footer />
     </div>
   );
 }
