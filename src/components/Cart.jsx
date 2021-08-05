@@ -43,13 +43,15 @@ function Cart({ item, onDelete, availableBike }) {
 
     valueContainer: (provided, state) => ({
       ...provided,
-      height: '26px',
+      height: '22px',
       padding: '0 6px',
     }),
 
     input: (provided, state) => ({
       ...provided,
       margin: '0px',
+      height: '22px',
+      overflow: 'hidden',
     }),
     indicatorSeparator: (state) => ({
       display: 'none',
