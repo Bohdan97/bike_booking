@@ -9,8 +9,13 @@ function Statistics({ bike }) {
   const averResult = result.reduce((sum, current) => {
     return sum + current;
   }, 0);
-
   const average = Math.floor(averResult / bike.length);
+
+  const available = [];
+  bike.forEach((item) => available.push(item.status));
+  const avalFinall = available.filter((e) => e === 'available');
+
+  const book = bike.length - avalFinall.length;
 
   return (
     <div className="statistic">
@@ -20,10 +25,10 @@ function Statistics({ bike }) {
           Total Bikes: <span className="bold">{bike.length}</span>
         </li>
         <li>
-          Available Bikes: <span className="bold">0</span>
+          Available Bikes: <span className="bold">{avalFinall.length}</span>
         </li>
         <li>
-          Booked Bikes: <span className="bold">0</span>
+          Booked Bikes: <span className="bold">{book}</span>
         </li>
         <li>
           Average bike cost: <span className="bold">{bike.length > 0 ? average : 0}</span> UAH/hr

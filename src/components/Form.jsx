@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const Form = ({ onAdd }) => {
+const Form = ({ onAdd, unicId }) => {
   const [name, setName] = useState('');
   const [type, setType] = useState('');
   const [color, setColor] = useState('');
@@ -12,35 +12,38 @@ const Form = ({ onAdd }) => {
 
   const saveBike = (e) => {
     e.preventDefault();
-    if (
-      name.length > 5 &&
-      type.length > 5 &&
-      color.length > 5 &&
-      wheel_size.length > 1 &&
-      price.length > 1 &&
-      id.length > 1 &&
-      description.length > 5
-    ) {
-      onAdd({
-        name,
-        type,
-        color,
-        wheel_size,
-        price,
-        id,
-        description,
-      });
+    if (unicId(id)) {
+      if (
+        name.length > 5 &&
+        type.length > 5 &&
+        color.length > 5 &&
+        wheel_size > 0 &&
+        price > 0 &&
+        id > 0 &&
+        description.length > 5
+      ) {
+        onAdd({
+          name,
+          type,
+          color,
+          wheel_size,
+          price,
+          id,
+          description,
+          status: 'available',
+        });
 
-      setName('');
-      setType('');
-      setColor('');
-      setWheel_size('');
-      setPrice('');
-      setId('');
-      setDescription('');
-    } else {
-      alert('Fill in all fild!');
-    }
+        setName('');
+        setType('');
+        setColor('');
+        setWheel_size('');
+        setPrice('');
+        setId('');
+        setDescription('');
+      } else {
+        alert('Fill in all fild!');
+      }
+    } else alert('This id is already use');
   };
 
   const clearForm = () => {
@@ -75,6 +78,7 @@ const Form = ({ onAdd }) => {
         onChange={(e) => setColor(e.target.value)}
       />
       <input
+        pattern="^[0-9]+$"
         type="number"
         value={wheel_size}
         placeholder="Wheel size"
@@ -89,7 +93,7 @@ const Form = ({ onAdd }) => {
       <input
         type="number"
         value={id}
-        placeholder="ID(slug) xxxxxxxxxxx"
+        placeholder="ID: xxxxxxxxxxx"
         onChange={(e) => setId(e.target.value)}
       />
       <textarea

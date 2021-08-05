@@ -3,7 +3,7 @@ import { FaTimes } from 'react-icons/fa';
 import Select from 'react-select';
 import localforage from 'localforage';
 
-function Cart({ item, onDelete }) {
+function Cart({ item, onDelete, availableBike }) {
   const statusList = [
     {
       value: 'available',
@@ -19,33 +19,31 @@ function Cart({ item, onDelete }) {
     },
   ];
 
-  const [status, setStatus] = useState(statusList[0].value);
+  const [status, setStatus] = useState(item.status);
 
   const statusHandler = (e) => {
     setStatus(e.value);
+    availableBike(item.id, e.value);
+    localforage.getItem(item.id).then((item) => {
+      item.status = e.value;
+      localforage.setItem(item.id, item);
+    });
   };
-
-  // if (item.length > 0) {
-  //   localforage.getItem(item.id).then((item) => {
-  //     item.status = { status };
-  //     localforage.setItem(item.id, item);
-  //   });
-  // }
 
   const customStyles = {
     control: (provided, state) => ({
       ...provided,
       background: 'none',
       border: 'none',
-      // minHeight: '22px',
-      // height: '22px',
+      minHeight: '22px',
+      height: '22px',
       width: '122px',
       boxShadow: state.isFocused ? null : null,
     }),
 
     valueContainer: (provided, state) => ({
       ...provided,
-      // height: '22px',
+      height: '26px',
       padding: '0 6px',
     }),
 
@@ -58,7 +56,7 @@ function Cart({ item, onDelete }) {
     }),
     indicatorsContainer: (provided, state) => ({
       ...provided,
-      // height: '22px',
+      height: '22px',
     }),
   };
 
@@ -75,18 +73,12 @@ function Cart({ item, onDelete }) {
 
       <div className="status">
         <span>STATUS:</span>
-
         <Select
           options={statusList}
           onChange={statusHandler}
-          defaultValue={statusList[0]}
+          defaultValue={statusList.find((x) => x.value === item.status)}
           styles={customStyles}
         />
-        {/* <select>
-          <option value="available">Available</option>
-          <option value="busy">Busy</option>
-          <option value="unavailable">Unavailable</option>
-        </select> */}
       </div>
     </div>
   );
