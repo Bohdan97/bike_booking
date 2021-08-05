@@ -4,7 +4,7 @@ function Footer() {
   return (
     <div className="footer">
       <span className="dev_color">Developer:</span>
-      <span className="name_color">Boohdan Kravchenko</span>
+      <span className="name_color">Bohdan Kravchenko</span>
     </div>
   );
 }

@@ -12,23 +12,35 @@ const Form = ({ onAdd }) => {
 
   const saveBike = (e) => {
     e.preventDefault();
-    onAdd({
-      name,
-      type,
-      color,
-      wheel_size,
-      price,
-      id,
-      description,
-    });
+    if (
+      name.length > 5 &&
+      type.length > 5 &&
+      color.length > 5 &&
+      wheel_size.length > 1 &&
+      price.length > 1 &&
+      id.length > 1 &&
+      description.length > 5
+    ) {
+      onAdd({
+        name,
+        type,
+        color,
+        wheel_size,
+        price,
+        id,
+        description,
+      });
 
-    setName('');
-    setType('');
-    setColor('');
-    setWheel_size('');
-    setPrice('');
-    setId('');
-    setDescription('');
+      setName('');
+      setType('');
+      setColor('');
+      setWheel_size('');
+      setPrice('');
+      setId('');
+      setDescription('');
+    } else {
+      alert('Fill in all fild!');
+    }
   };
 
   const clearForm = () => {
@@ -44,44 +56,39 @@ const Form = ({ onAdd }) => {
   return (
     <form>
       <input
+        required
         type="text"
         value={name}
-        minLength="5"
         placeholder="Name"
         onChange={(e) => setName(e.target.value)}
       />
       <input
         type="text"
         value={type}
-        minLength="5"
         placeholder="Type"
         onChange={(e) => setType(e.target.value)}
       />
       <input
         type="text"
         value={color}
-        minLength="5"
         placeholder="Color"
         onChange={(e) => setColor(e.target.value)}
       />
       <input
         type="number"
         value={wheel_size}
-        minLength="5"
         placeholder="Wheel size"
         onChange={(e) => setWheel_size(e.target.value)}
       />
       <input
         type="number"
         value={price}
-        minLength="5"
         placeholder="Price"
         onChange={(e) => setPrice(e.target.value)}
       />
       <input
         type="number"
         value={id}
-        minLength="5"
         placeholder="ID(slug) xxxxxxxxxxx"
         onChange={(e) => setId(e.target.value)}
       />

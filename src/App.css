@@ -24,6 +24,48 @@
 
 /* Cart */
 
+.available {
+  border: 2px solid #6fcf97;
+  width: 615px;
+  height: 83px;
+  left: 12px;
+  top: 51px;
+  background: #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-left: 18px;
+  margin-left: 12px;
+  margin-bottom: 9px;
+}
+
+.busy {
+  border: 2px solid #f2994a;
+  width: 615px;
+  height: 83px;
+  left: 12px;
+  top: 51px;
+  background: #e8e8e8;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-left: 18px;
+  margin-left: 12px;
+  margin-bottom: 9px;
+}
+
+.unavailable {
+  border: 2px solid #eb5757;
+  width: 615px;
+  height: 83px;
+  left: 12px;
+  top: 51px;
+  background: #f4f4f4;
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding-left: 18px;
+  margin-left: 12px;
+  margin-bottom: 9px;
+}
+
 .main {
   height: 616px;
   display: flex;
@@ -43,7 +85,6 @@
   left: 12px;
   top: 51px;
   background: #e8e8e8;
-  border: 2px solid #6fcf97;
   box-sizing: border-box;
   border-radius: 10px;
   padding-left: 18px;
@@ -51,7 +92,12 @@
   margin-bottom: 9px;
 }
 
-.wrapper h2 {
+.unavailable h2 {
+  color: #949494;
+}
+.unavailable h2,
+.busy h2,
+.available h2 {
   font-weight: normal;
   font-size: 14px;
   line-height: 22px;
@@ -77,14 +123,10 @@
   font-size: 14px;
   line-height: 22px;
 }
-select {
-  border: none;
-  background-color: #e8e8e8;
-  margin-left: 18px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 22px;
+
+.status span {
+  float: left;
+  margin-right: 18px;
 }
 
 .second_half {
@@ -106,7 +148,10 @@ select {
   line-height: 38px;
   margin-right: 10px;
   padding-top: 10px;
+  padding-left: 50px;
 }
+
+/* Select */
 
 /* Form */
 form {
