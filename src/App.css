@@ -154,6 +154,7 @@
 
 /* Form */
 form {
+  position: absolute;
   height: 252px;
   border-bottom: 1px solid #c4c4c4;
 }
@@ -202,8 +203,77 @@ button {
   margin-top: 10px;
 }
 
+/* Error */
+.error_name {
+  position: absolute;
+  top: 5px;
+  left: 180px;
+  color: red;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.error_type {
+  position: absolute;
+  top: 5px;
+  left: 425px;
+  color: red;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.error_color {
+  position: absolute;
+  top: 44px;
+  left: 180px;
+  color: red;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.error_size {
+  position: absolute;
+  top: 44px;
+  left: 425px;
+  color: red;
+  font-size: 12px;
+  line-height: 19px;
+}
+.error_price {
+  position: absolute;
+  top: 83px;
+  left: 180px;
+  color: red;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.error_id {
+  position: absolute;
+  top: 83px;
+  left: 425px;
+  color: red;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.desc_error {
+  position: absolute;
+  top: 170px;
+  left: 425px;
+  color: red;
+  font-size: 12px;
+  line-height: 19px;
+}
+
+.input_error {
+  border: 1px solid red;
+}
+
 /* Statistic */
 .statistic {
+  top: 332px;
+  position: absolute;
   padding-top: 10px;
 }
 .statistic h1 {

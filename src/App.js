@@ -1,7 +1,8 @@
 import './App.css';
 
 import Footer from './components/Footer';
-import Form from './components/Form';
+
+import FormNew from './components/FormNew';
 import Header from './components/Header';
 import Statistics from './components/Statistics';
 import Cart from './components/Cart';
@@ -50,7 +51,8 @@ function App() {
           )}
         </div>
         <div className="second_half">
-          <Form onAdd={addBike} unicId={unicId} />
+          {/* <Form onAdd={addBike} unicId={unicId} /> */}
+          <FormNew onAdd={addBike} unicId={unicId} />
           <Statistics bike={bike} />
         </div>
       </div>
